@@ -1,2 +1,14 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+	<%= form_tag "/home/question", method: :get, class:"form-signin" do %>
+		<h2 class="form-signin-heading">Verificación de pico y placa</h2>
+		<label>Ingrese su placa:</label>
+		<%= text_field_tag :plate, nil, placeholder: "Ingrese su placa", required: "true", style:"text-transform: uppercase", class:"form-control" %>
+		<label>Seleccione el dia que desea salir:</label>
+		<%= select_tag :day, options_for_select(["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"], disabled: ["Sabado", "Domingo"]), class:"form-control" %>
+		<label>Ingrese la hora que desea salir:</label>
+		<%= time_field_tag :hour, class:"form-control" %>
+		<%= content_tag :button, type: :submit, class:"btn btn-lg btn-primary btn-block" do %>
+			Consultar
+		<%end%>
+	<%end%>
+</div>
